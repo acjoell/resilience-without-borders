@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resilience Without Borders (RWB) | La solidaridad no conoce fronteras</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration for RWB Branding -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rwb: {
+                            blue: '#123B4A',
+                            green: '#1F897D',
+                            orange: '#E9A23B',
+                            light: '#F5F7F5',
+                            dark: '#263238'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #263238;
+            background-color: #FFFFFF;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(18, 59, 74, 0.95) 0%, rgba(31, 137, 125, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rwb-orange selection:text-white">
+
+    <!-- NAV BAR FIXA -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-rwb-blue/95 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo RWB -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-rwb-orange flex items-center justify-center font-heading font-black text-rwb-blue text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        RWB
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-white text-lg tracking-wider leading-none">RESILIENCE</span>
+                        <span class="font-sans text-xs text-rwb-orange font-medium tracking-widest uppercase">Without Borders</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#inicio" class="text-sm text-gray-200 hover:text-rwb-orange font-medium transition-colors">Inicio</a>
+                    <a href="#quienes-somos" class="text-sm text-gray-200 hover:text-rwb-orange font-medium transition-colors">Quiénes Somos</a>
+                    <a href="#pilares" class="text-sm text-gray-200 hover:text-rwb-orange font-medium transition-colors">Qué Hacemos</a>
+                    <a href="#proyecto" class="text-sm text-gray-200 hover:text-rwb-orange font-medium transition-colors">Proyecto Pereira</a>
+                    <a href="#transparencia" class="text-sm text-gray-200 hover:text-rwb-orange font-medium transition-colors">Transparencia</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iISfkzSdDEemwIz1m5QbtsFmFfP9hB9Bh93EjD8MWRRUOFZRODc4NFlaU0NLRTNFOTkxRTQyNlRWTS4u" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-rwb-orange text-rwb-blue font-heading font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i data-lucide="heart" class="w-4 h-4 fill-rwb-blue"></i>
+                        Sumarme
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2 focus:outline-none" aria-label="Abrir menú">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-rwb-blue border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block text-gray-200 hover:text-rwb-orange font-medium py-2">Inicio</a>
+            <a href="#quienes-somos" class="block text-gray-200 hover:text-rwb-orange font-medium py-2">Quiénes Somos</a>
+            <a href="#pilares" class="block text-gray-200 hover:text-rwb-orange font-medium py-2">Qué Hacemos</a>
+            <a href="#proyecto" class="block text-gray-200 hover:text-rwb-orange font-medium py-2">Proyecto Pereira</a>
+            <a href="#transparencia" class="block text-gray-200 hover:text-rwb-orange font-medium py-2">Transparencia</a>
+            <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iISfkzSdDEemwIz1m5QbtsFmFfP9hB9Bh93EjD8MWRRUOFZRODc4NFlaU0NLRTNFOTkxRTQyNlRWTS4u" target="_blank" rel="noopener noreferrer" class="inline-block w-full text-center px-5 py-3 rounded-xl bg-rwb-orange text-rwb-blue font-bold text-sm mt-2">
+                Sumarme como Voluntario
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section id="inicio" class="relative hero-gradient pt-32 pb-20 md:pt-44 md:pb-32 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rwb-green/30 border border-rwb-green/50 text-xs font-semibold uppercase tracking-wider text-teal-200 mb-6">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    Iniciativa Humanitaria Social
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight leading-tight mb-6">
+                    LA SOLIDARIDAD NO CONOCE FRONTERAS
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-200 mb-4 font-normal leading-relaxed">
+                    Trabajamos para fortalecer comunidades, prevenir riesgos y transformar la solidaridad en acciones concretas de recuperación, educación y resiliencia.
+                </p>
+                <p class="text-sm sm:text-base text-gray-300 mb-8 italic">
+                    "Preparar, proteger y reconstruir"
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iISfkzSdDEemwIz1m5QbtsFmFfP9hB9Bh93EjD8MWRRUOFZRODc4NFlaU0NLRTNFOTkxRTQyNlRWTS4u" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl bg-rwb-orange text-rwb-blue font-heading font-bold text-base hover:bg-yellow-400 hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-3">
+                        <i data-lucide="user-plus" class="w-5 h-5"></i>
+                        Quiero ser voluntario
+                    </a>
+                    <a href="#proyecto" class="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-heading font-semibold text-base backdrop-blur-sm transition-all flex items-center gap-3">
+                        Explora el Proyecto Pereira
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Metas Destacadas en Tarjetas Floating -->
+            <div class="mt-16 sm:mt-24">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xs sm:text-sm uppercase tracking-widest text-teal-200 font-semibold flex items-center gap-2">
+                        <i data-lucide="target" class="w-4 h-4 text-rwb-orange"></i>
+                        Metas Proyectadas (Primer Nodo Pilotaje)
+                    </h3>
+                    <span class="text-xs text-gray-300 italic">*Metas propuestas del proyecto 2026-2027</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                    <div class="bg-rwb-blue/80 backdrop-blur-md p-5 rounded-2xl border border-white/10 hover:border-rwb-orange/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-orange mb-1">5</div>
+                        <p class="text-xs sm:text-sm text-gray-300 font-medium">Colegios por reconstruir</p>
+                    </div>
+                    <div class="bg-rwb-blue/80 backdrop-blur-md p-5 rounded-2xl border border-white/10 hover:border-rwb-orange/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-orange mb-1">1.000</div>
+                        <p class="text-xs sm:text-sm text-gray-300 font-medium">Estudiantes beneficiados</p>
+                    </div>
+                    <div class="bg-rwb-blue/80 backdrop-blur-md p-5 rounded-2xl border border-white/10 hover:border-rwb-orange/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-orange mb-1">1.000</div>
+                        <p class="text-xs sm:text-sm text-gray-300 font-medium">Familias impactadas</p>
+                    </div>
+                    <div class="bg-rwb-blue/80 backdrop-blur-md p-5 rounded-2xl border border-white/10 hover:border-rwb-orange/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-orange mb-1">80</div>
+                        <p class="text-xs sm:text-sm text-gray-300 font-medium">Voluntarios previstos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. QUIÉNES SOMOS Y VALORES -->
+    <section id="quienes-somos" class="py-20 sm:py-28 bg-rwb-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Historia & Misión -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-rwb-green font-heading font-bold text-sm tracking-wider uppercase">Nuestra Identidad</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-blue leading-tight">
+                        Cuando una comunidad se levanta, todos avanzamos.
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        <strong class="text-rwb-blue">Resilience Without Borders (RWB)</strong> surge de una convicción fundamental: ninguna comunidad debería enfrentar sola las consecuencias de una emergencia o desastre natural.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Conectamos el compromiso de los voluntarios, la experiencia profesional, el conocimiento institucional y el apoyo corporativo para transformarlos en proyectos sostenibles de prevención, gestión del riesgo y reconstrucción.
+                    </p>
+
+                    <!-- Misión & Visión Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <div class="w-10 h-10 rounded-lg bg-rwb-green/10 text-rwb-green flex items-center justify-center mb-3">
+                                <i data-lucide="compass" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-rwb-blue mb-2">Misión</h3>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Fortalecer la resiliencia comunitaria mediante prevención del riesgo, educación y movilización coordinada de voluntarios.
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <div class="w-10 h-10 rounded-lg bg-rwb-orange/10 text-rwb-orange flex items-center justify-center mb-3">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-rwb-blue mb-2">Visión</h3>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Ser una iniciativa humanitaria de referencia nacional en Colombia y proyección internacional para la respuesta efectiva.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Imagen e Identidad -->
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop" 
+                             alt="Voluntarios RWB en comunidad" 
+                             class="w-full h-[450px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-rwb-blue/90 via-rwb-blue/20 to-transparent flex items-end p-8">
+                            <div class="text-white">
+                                <p class="font-heading font-bold text-lg">Iniciativa con proyección territorial inicial en Risaralda</p>
+                                <p class="text-xs text-gray-300">Resiliencia comunitaria y reconstrucción colectiva.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Valores Institucionales -->
+            <div class="mt-20">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h3 class="text-2xl font-heading font-bold text-rwb-blue">Nuestros Valores Institucionales</h3>
+                    <p class="text-gray-500 text-sm mt-2">Principios que guían cada acción y decisión en el territorio</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <!-- Valor 1 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-rwb-blue/5 text-rwb-blue flex items-center justify-center mb-3">
+                            <i data-lucide="heart" class="w-6 h-6 text-rwb-orange"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-sm text-rwb-blue mb-1">Solidaridad</h4>
+                        <p class="text-xs text-gray-500">Apoyo mutuo en cada emergencia.</p>
+                    </div>
+
+                    <!-- Valor 2 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-rwb-green/10 text-rwb-green flex items-center justify-center mb-3">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-sm text-rwb-blue mb-1">Resiliencia</h4>
+                        <p class="text-xs text-gray-500">Recuperación y transformación.</p>
+                    </div>
+
+                    <!-- Valor 3 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-rwb-blue/5 text-rwb-blue flex items-center justify-center mb-3">
+                            <i data-lucide="file-check-2" class="w-6 h-6 text-rwb-blue"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-sm text-rwb-blue mb-1">Transparencia</h4>
+                        <p class="text-xs text-gray-500">Gestión verificable de recursos.</p>
+                    </div>
+
+                    <!-- Valor 4 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-rwb-orange/10 text-rwb-orange flex items-center justify-center mb-3">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-sm text-rwb-blue mb-1">Compromiso</h4>
+                        <p class="text-xs text-gray-500">Actuamos con máxima responsabilidad.</p>
+                    </div>
+
+                    <!-- Valor 5 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-rwb-green/10 text-rwb-green flex items-center justify-center mb-3">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-sm text-rwb-blue mb-1">Acción Colectiva</h4>
+                        <p class="text-xs text-gray-500">El poder de organizarnos juntos.</p>
+                    </div>
+
+                    <!-- Valor 6 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-rwb-blue/5 text-rwb-blue flex items-center justify-center mb-3">
+                            <i data-lucide="smile" class="w-6 h-6 text-rwb-orange"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-sm text-rwb-blue mb-1">Dignidad</h4>
+                        <p class="text-xs text-gray-500">Las personas son el centro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. QUÉ HACEMOS (PILARES DE ACCIÓN) -->
+    <section id="pilares" class="py-20 sm:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-rwb-green font-heading font-bold text-sm tracking-wider uppercase">Áreas de Intervención</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-blue mt-2">Nuestros Pilares Operativos</h2>
+                <p class="text-gray-600 mt-4">Desarrollamos una propuesta integral que abarca desde la preparación previa hasta la recuperación física y social de la comunidad.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pilar 1 -->
+                <div class="bg-rwb-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rwb-green text-white flex items-center justify-center mb-6 shadow-md">
+                            <i data-lucide="life-buoy" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-rwb-blue mb-3">1. Prevención y Gestión del Riesgo</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Formamos a las comunidades para identificar amenazas, realizar planes comunitarios de emergencia, definir rutas de evacuación y cultivar una cultura activa de autoprotección.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-semibold text-rwb-green flex items-center gap-1">
+                            Capacitaciones y Simulacros
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="bg-rwb-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rwb-blue text-white flex items-center justify-center mb-6 shadow-md">
+                            <i data-lucide="hand-heart" class="w-7 h-7 text-rwb-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-rwb-blue mb-3">2. Respuesta Humanitaria Coordinada</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Fortalecemos la articulación logística y movilización de suministros y voluntarios, siempre operando bajo estritos protocolos de seguridad y en plena coordinación con autoridades.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-semibold text-rwb-blue flex items-center gap-1">
+                            Articulación sin duplicar esfuerzos
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="bg-rwb-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rwb-orange text-rwb-blue flex items-center justify-center mb-6 shadow-md">
+                            <i data-lucide="hammer" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-rwb-blue mb-3">3. Reconstrucción Educativa</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Priorizamos la recuperación de infraestructura escolar y espacios comunitarios vitales para devolver a los niños y jóvenes lugares seguros de aprendizaje.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-semibold text-rwb-orange flex items-center gap-1">
+                            Infraestructura Segura
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pilar 4 -->
+                <div class="bg-rwb-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rwb-blue text-white flex items-center justify-center mb-6 shadow-md">
+                            <i data-lucide="book-open" class="w-7 h-7 text-rwb-green"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-rwb-blue mb-3">4. Formación y Participación</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Desarrollamos talleres prácticos, procesos educativos continuos y fortalecimiento de liderazgos locales para que la capacidad instalada permanezca en la región.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-semibold text-rwb-blue flex items-center gap-1">
+                            Empoderamiento Comunitario
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pilar 5 -->
+                <div class="bg-rwb-light p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between lg:col-span-2">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rwb-green text-white flex items-center justify-center mb-6 shadow-md">
+                            <i data-lucide="megaphone" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-rwb-blue mb-3">5. Comunicación para la Resiliencia</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Campañas de sensibilización social, divulgación de guías preventivas e historias comunitarias para mantener viva la cultura de preparación y movilizar alianzas estratégicas.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-semibold text-rwb-green flex items-center gap-1">
+                            Sensibilización e Información
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROYECTO DESTACADO (PEREIRA VUELVE A ESTUDIAR) -->
+    <section id="proyecto" class="py-20 sm:py-28 bg-rwb-blue text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-12 backdrop-blur-md">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    
+                    <div class="w-full lg:w-1/2 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rwb-orange/20 border border-rwb-orange text-rwb-orange text-xs font-bold uppercase tracking-wider">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                            Primer Nodo Piloto Territorial
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-heading font-extrabold leading-tight text-white">
+                            Pereira Vuelve a Estudiar
+                        </h2>
+                        <p class="text-gray-300 text-base leading-relaxed">
+                            Una iniciativa propuesta para la recuperación de instituciones educativas y fortalecimiento comunitario en el municipio de <strong>Pereira, Risaralda, Colombia</strong>.
+                        </p>
+                        
+                        <div class="bg-rwb-blue/90 p-4 rounded-xl border border-white/10 text-xs text-gray-300">
+                            <p class="font-bold text-rwb-orange mb-1">Periodo de Planificación Inicial:</p>
+                            <p>1 de Noviembre de 2026 – 31 de Octubre de 2027</p>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iISfkzSdDEemwIz1m5QbtsFmFfP9hB9Bh93EjD8MWRRUOFZRODc4NFlaU0NLRTNFOTkxRTQyNlRWTS4u" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-rwb-orange text-rwb-blue font-heading font-bold text-sm hover:bg-yellow-400 transition-colors">
+                                Unirme al equipo de Pereira
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Cronograma / Etapas del Proyecto -->
+                    <div class="w-full lg:w-1/2">
+                        <h3 class="font-heading font-bold text-lg text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="calendar" class="w-5 h-5 text-rwb-orange"></i>
+                            Etapas del Cronograma Proyectado
+                        </h3>
+
+                        <div class="space-y-4">
+                            <!-- Etapa 1 -->
+                            <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                                <span class="w-8 h-8 rounded-full bg-rwb-orange text-rwb-blue font-bold text-xs flex items-center justify-center shrink-0">E1</span>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Nov – Dic 2026: Diagnóstico y Convocatoria</h4>
+                                    <p class="text-xs text-gray-300 mt-0.5">Identificación de necesidades en campo, articulación con líderes locales y apertura de registro de voluntarios.</p>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 2 -->
+                            <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                                <span class="w-8 h-8 rounded-full bg-rwb-green text-white font-bold text-xs flex items-center justify-center shrink-0">E2</span>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Ene – Feb 2027: Formación y Alianzas</h4>
+                                    <p class="text-xs text-gray-300 mt-0.5">Capacitación del equipo de 80 voluntarios iniciales y consolidación de aportes del sector privado y social.</p>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 3 -->
+                            <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                                <span class="w-8 h-8 rounded-full bg-teal-400 text-rwb-blue font-bold text-xs flex items-center justify-center shrink-0">E3</span>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Mar – Ago 2027: Intervención y Recuperación</h4>
+                                    <p class="text-xs text-gray-300 mt-0.5">Ejecución de trabajos de adecuación de infraestructura educativa y talleres comunitarios directos.</p>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 4 -->
+                            <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-start gap-4">
+                                <span class="w-8 h-8 rounded-full bg-yellow-200 text-rwb-blue font-bold text-xs flex items-center justify-center shrink-0">E4</span>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Sep – Oct 2027: Evaluación y Cierre de Ciclo</h4>
+                                    <p class="text-xs text-gray-300 mt-0.5">Sistematización de resultados, medición de impacto e informe público de transparencia financiera.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TRANSPARENCIA & MODELO DE GESTIÓN -->
+    <section id="transparencia" class="py-20 sm:py-28 bg-rwb-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-rwb-green font-heading font-bold text-sm tracking-wider uppercase">Responsabilidad e Integridad</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-rwb-blue mt-2">Transparencia y Gestión</h2>
+                <p class="text-gray-600 mt-4">Defendemos la gestión responsable, ética y verificable de los recursos. Presentamos nuestro plan presupuestal proyectado para el primer año operativo.</p>
+            </div>
+
+            <!-- Dashboard de Presupuesto -->
+            <div class="bg-white rounded-3xl shadow-lg p-6 sm:p-10 border border-gray-100 mb-12">
+                <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 mb-8 border-b border-gray-100 gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Presupuesto Operativo Total Proyectado</span>
+                        <div class="text-3xl sm:text-4xl font-heading font-black text-rwb-blue mt-1">
+                            $3.019.947.000 <span class="text-lg font-bold text-rwb-green">COP</span>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 border border-yellow-200 p-3.5 rounded-xl text-xs text-yellow-800 max-w-md">
+                        <i data-lucide="info" class="w-4 h-4 inline mr-1 text-rwb-orange"></i>
+                        <strong>Nota de Transparencia:</strong> Corresponde a la planeación financiera operativa proyectada (2026-2027). No representa fondos recaudados previamente.
+                    </div>
+                </div>
+
+                <!-- Progress Bar Visual Representation -->
+                <h4 class="font-heading font-bold text-sm text-rwb-blue mb-4">Distribución del Presupuesto Planeado:</h4>
+                <div class="space-y-4">
+                    
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                            <span>Emergencia y Respuesta Humanitaria (44.8%)</span>
+                            <span>$1.352.904.000 COP</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-rwb-blue rounded-full" style="width: 44.8%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                            <span>Operación Nacional (23.7%)</span>
+                            <span>$718.000.000 COP</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-rwb-green rounded-full" style="width: 23.7%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                            <span>Reconstrucción Educativa (20.1%)</span>
+                            <span>$608.260.000 COP</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-rwb-orange rounded-full" style="width: 20.1%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                            <span>Piloto Pereira (5.3%)</span>
+                            <span>$160.730.000 COP</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-teal-600 rounded-full" style="width: 5.3%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                            <span>Contingencia Operativa (3.2%) & Comunicación (2.8%)</span>
+                            <span>$180.053.000 COP</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-gray-400 rounded-full" style="width: 6%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. VOLUNTARIADO & EMPRESAS (CALL TO ACTION / FORMS) -->
+    <section id="voluntariado" class="py-20 sm:py-28 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-rwb-blue to-teal-900 rounded-3xl p-8 sm:p-16 text-white text-center relative overflow-hidden shadow-2xl">
+                
+                <div class="max-w-3xl mx-auto relative z-10">
+                    <div class="w-16 h-16 rounded-full bg-rwb-orange/20 text-rwb-orange flex items-center justify-center mx-auto mb-6 border border-rwb-orange/40">
+                        <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-heading font-black tracking-tight mb-6">
+                        El cambio también comienza contigo
+                    </h2>
+
+                    <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-8">
+                        Tu tiempo, tu conocimiento profesional y tu compromiso pueden transformar la realidad de comunidades enteras. Buscamos voluntarios en educación, logística, trabajo social, comunicación y gestión de alianzas.
+                    </p>
+
+                    <!-- GOOGLE FORMS BUTTON DESTACADO -->
+                    <div class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/20 max-w-xl mx-auto space-y-4">
+                        <h3 class="font-heading font-bold text-lg text-white">¿Quieres sumarte como voluntario o aliado?</h3>
+                        <p class="text-xs text-gray-300">Completa nuestro formulario oficial de vinculación e inscripción de datos.</p>
+                        
+                        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iISfkzSdDEemwIz1m5QbtsFmFfP9hB9Bh93EjD8MWRRUOFZRODc4NFlaU0NLRTNFOTkxRTQyNlRWTS4u" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-3 w-full py-4 px-8 rounded-xl bg-rwb-orange hover:bg-yellow-400 text-rwb-blue font-heading font-black text-base transition-all shadow-xl hover:scale-[1.02]">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                            Diligenciar Formulario de Registro
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                        <span class="block text-[11px] text-gray-400 mt-2">Serás redirigido a la plataforma oficial de registro RWB.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="bg-rwb-blue text-white pt-16 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Columna 1: Brand -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-rwb-orange flex items-center justify-center font-heading font-black text-rwb-blue text-base">
+                            RWB
+                        </div>
+                        <span class="font-heading font-bold text-lg tracking-wider">RESILIENCE WITHOUT BORDERS</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed max-w-sm">
+                        Iniciativa de organización humanitaria y social orientada a la prevención, respuesta coordinada y reconstrucción de espacios educativos en Colombia.
+                    </p>
+                    <p class="text-xs text-rwb-orange italic">"La solidaridad no conoce fronteras"</p>
+                </div>
+
+                <!-- Columna 2: Enlaces -->
+                <div>
+                    <h4 class="font-heading font-bold text-sm text-white mb-4 uppercase tracking-wider">Navegación</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#inicio" class="hover:text-rwb-orange transition-colors">Inicio</a></li>
+                        <li><a href="#quienes-somos" class="hover:text-rwb-orange transition-colors">Quiénes Somos</a></li>
+                        <li><a href="#pilares" class="hover:text-rwb-orange transition-colors">Qué Hacemos</a></li>
+                        <li><a href="#proyecto" class="hover:text-rwb-orange transition-colors">Proyecto Pereira</a></li>
+                        <li><a href="#transparencia" class="hover:text-rwb-orange transition-colors">Transparencia Financiera</a></li>
+                        <li><a href="#voluntariado" class="hover:text-rwb-orange transition-colors">Voluntariado</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Redes Sociales Oficiales -->
+                <div>
+                    <h4 class="font-heading font-bold text-sm text-white mb-4 uppercase tracking-wider">Síguenos</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="https://www.instagram.com/rwb.colombia/" target="_blank" rel="noopener noreferrer" 
+                           class="flex items-center gap-2 text-xs text-gray-300 hover:text-rwb-orange transition-colors">
+                            <i data-lucide="instagram" class="w-4 h-4 text-rwb-orange"></i>
+                            @rwb.colombia
+                        </a>
+                        <a href="https://www.tiktok.com/@rwbcolombia" target="_blank" rel="noopener noreferrer" 
+                           class="flex items-center gap-2 text-xs text-gray-300 hover:text-rwb-orange transition-colors">
+                            <i data-lucide="video" class="w-4 h-4 text-rwb-orange"></i>
+                            @rwbcolombia
+                        </a>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-[11px] text-gray-400 block">Ubicación Piloto: Pereira, Risaralda</span>
+                        <span class="text-[11px] text-gray-400 block">Colombia</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center md:flex md:justify-between text-xs text-gray-400">
+                <p>© 2026 Resilience Without Borders (RWB). Todos los derechos reservados.</p>
+                <p class="mt-2 md:mt-0">Proyecto de Iniciativa Social & Humanitaria</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Inicialización de Iconos y Menú Mobile -->
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        // Toggle Menú Móvil
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
